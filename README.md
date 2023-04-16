@@ -83,7 +83,7 @@ Fluxo Principal:
 •	Se o usuário inserir uma nova senha que não atenda aos requisitos de segurança, o sistema exibirá uma mensagem de erro e solicitará que o usuário insira uma nova senha que atenda aos requisitos de segurança.
 
 <br>
-Caso de Uso 4: <P>tela de criação de partida: o Usuário poderá criar uma sala 
+Caso de Uso 4: <P>tela de criação de partida, o Usuário poderá criar uma sala 
 Ou entrar em uma sala criada.
 
  Fluxo Principal:  
@@ -95,7 +95,7 @@ Ou entrar em uma sala criada.
 
 Fluxo alternativo:
 
-•	O usuário poderá se deparar com um erro ao entrar a sala, e será orientado pelo app, para ele checar a concessão com a internet.
+•	O usuário poderá se deparar com um erro ao entrar a sala, e será orientado pelo app, para ele checar a conexão com a internet.
 
 •	 Caso o erro persista o usuário será informado que ele precisará reiniciar o app, e caso isso não funcione ele terá que entrar em contato com o suporte técnico para possíveis soluções.
 
@@ -111,7 +111,7 @@ Caso de Uso 5:  <P>Tela de Detalhamento do Jogador, O usuário irá ver suas inf
 •	Se o usuário quiser mudar algum dado da sua tela de detalhamento, basta clicar no botão “alterar dados”.
 
 <br>
-Caso de uso 6:  Tela de Sorteio: O usuário irá adicionar o nome dos jogadores na listagem e sortear os times de modo randômico.
+Caso de uso 6:  Tela de Sorteio, O usuário irá adicionar o nome dos jogadores na listagem e sortear os times de modo randômico.
 
 Fluxo Principal:
 
@@ -289,6 +289,4 @@ COD 404: Erro ao atualizar, por favor verifique os parâmetros.
   "altura": "1.70"
 }
 ```
-
-
 
