@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="ProFut">Meu label</string>
+    <string name="entrar">Entrar</string>
+    <string name="text_cadastro">Crie sua conta</string>
+    <string name="text_recsenha">Esqueci minha senha</string>
 </resources>

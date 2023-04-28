@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#82F102"
-    android:backgroundTint="#8BFF04"
-    android:backgroundTintMode="src_atop"
+    android:background="@drawable/background"
     android:orientation="vertical"
     tools:context=".ActivityForResult">
 

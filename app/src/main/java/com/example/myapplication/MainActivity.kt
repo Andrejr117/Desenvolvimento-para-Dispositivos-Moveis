@@ -24,9 +24,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpView() {
 
-        binding.button2.setOnClickListener {
-            val email = binding.textView2.text.toString()
-            val senha = binding.textView3.text.toString()
+        binding.btEntrar.setOnClickListener {
+            val email = binding.editEmail.text.toString()
+            val senha = binding.editSenha.text.toString()
 
             if (email.equals("aluno@nassau.com.br") && senha.equals("alunonassau")) {
                 Toast.makeText(this, "Logado com sucesso!", Toast.LENGTH_LONG).show()
