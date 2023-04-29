@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    tools:context=".ActivityTelaCadastro">
+
+    <TextView
+        android:id="@+id/title_cadastro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_cadastro"
+        android:textSize="40sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+
+    <EditText
+        android:id="@+id/edit_nome"
+        style="@style/Edit_Text"
+        android:hint="Nome"
+        android:drawableRight="@drawable/ic_nome"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/title_cadastro"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/edit_email"
+        style="@style/Edit_Text"
+        android:hint="Email"
+        android:drawableRight="@drawable/ic_email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintTop_toBottomOf="@id/edit_nome"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/edit_senha"
+        style="@style/Edit_Text"
+        android:hint="Senha"
+        android:drawableRight="@drawable/ic_eye"
+        android:inputType="numberPassword"
+        app:layout_constraintTop_toBottomOf="@id/edit_email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/edit_endereco"
+        style="@style/Edit_Text"
+        android:hint="Endereço"
+        android:drawableRight="@drawable/ic_endereco"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/edit_senha"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/edit_nacionalidade"
+        style="@style/Edit_Text"
+        android:hint="Nacionalidade"
+        android:drawableRight="@drawable/ic_nacionalidade"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/edit_endereco"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/edit_posicao"
+        style="@style/Edit_Text"
+        android:hint="Posição"
+        android:drawableRight="@drawable/ic_posicao"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/edit_nacionalidade"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/edit_pe_dominante"
+        style="@style/Edit_Text"
+        android:hint="Pé Dominante"
+        android:drawableRight="@drawable/ic_pe_dominante"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/edit_posicao"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/edit_altura"
+        style="@style/Edit_Text"
+        android:drawableRight="@drawable/ic_altura"
+        android:hint="Altura"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_pe_dominante" />
+
+    <Button
+        android:id="@+id/bt_cadastro"
+        android:layout_width="227dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="4dp"
+        android:textSize="13dp"
+        android:text="@string/finalizar_cadastro"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.782"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_altura" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,4 +4,6 @@
     <string name="entrar">Entrar</string>
     <string name="text_cadastro">Crie sua conta</string>
     <string name="text_recsenha">Esqueci minha senha</string>
+    <string name="title_cadastro">Vamos Começar !</string>
+    <string name="finalizar_cadastro">Finalizar Cadastro</string>
 </resources>
