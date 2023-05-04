@@ -12,6 +12,7 @@ class ActivityRecSenha: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRecSenhaBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
 
     }
 

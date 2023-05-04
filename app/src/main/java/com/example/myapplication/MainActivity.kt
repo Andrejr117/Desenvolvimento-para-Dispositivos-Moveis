@@ -14,8 +14,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setUpView()
+        logarUsuario()
         supportActionBar?.hide()
+
     }
 
 
@@ -24,13 +25,13 @@ class MainActivity : AppCompatActivity() {
         Toast.LENGTH_SHORT).show()
     }
 
-    private fun setUpView() {
+    private fun logarUsuario() {
 
         binding.btEntrar.setOnClickListener {
             val email = binding.editEmail.text.toString()
             val senha = binding.editSenha.text.toString()
 
-            if (email.equals("aluno@nassau.com.br") && senha.equals("alunonassau")) {
+            if (email && senha) {
                 Toast.makeText(this, "Logado com sucesso!", Toast.LENGTH_LONG).show()
             } else {
                 Toast.makeText(this, "Email ou senha invalido", Toast.LENGTH_LONG).show()
@@ -39,5 +40,6 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
 
 }

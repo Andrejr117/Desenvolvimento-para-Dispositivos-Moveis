@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    tools:context=".ActivityDirecionamento">
+
+    <View
+        android:id="@+id/container_text_direcionamento"
+        style="@style/ContainerComponents"
+        android:layout_width="327dp"
+        android:layout_height="107dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_direcionamento"
+        android:layout_width="331dp"
+        android:layout_height="81dp"
+        android:layout_marginTop="60dp"
+        android:text="Para onde vamos ?"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.623"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_perfil"
+        style="@style/Button"
+        android:layout_marginTop="48dp"
+        android:text="Perfil"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_direcionamento" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_criar_sala"
+        style="@style/Button"
+        android:layout_marginTop="68dp"
+        android:text="Criar sala"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bt_perfil" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_entrar_sala"
+        style="@style/Button"
+        android:layout_marginTop="72dp"
+        android:text="Entrar em uma sala"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bt_criar_sala" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
