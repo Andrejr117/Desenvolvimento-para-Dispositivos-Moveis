@@ -14,6 +14,9 @@ class ActivityRecSenha: AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
+
+
+
     }
 
 

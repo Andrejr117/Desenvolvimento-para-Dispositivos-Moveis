@@ -14,5 +14,7 @@ class ActivityPerfil : AppCompatActivity() {
         binding = ActivityPerfilBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
+
+
     }
 }

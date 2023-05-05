@@ -1,7 +1,9 @@
 package com.example.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import com.example.myapplication.databinding.ActivityDirecionamentoBinding
 
 class ActivityDirecionamento : AppCompatActivity() {
@@ -14,5 +16,20 @@ class ActivityDirecionamento : AppCompatActivity() {
         binding = ActivityDirecionamentoBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
+
+
+
+
+
+
+
+        val buttonPerfil = binding.btPerfil
+        buttonPerfil.setOnClickListener {
+            val intent = Intent(this, ActivityPerfil::class.java)
+            startActivity(intent)
+        }
+
+
+
     }
 }
