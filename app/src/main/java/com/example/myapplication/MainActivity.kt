@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
 
         val textViewRecSenha = binding.textTelarecsenha
         textViewRecSenha.setOnClickListener{
-            val intent = Intent(this, ActivityTelaCadastro::class.java)
+            val intent = Intent(this, ActivityRecSenha::class.java)
             startActivity(intent)
         }
 
