@@ -2,11 +2,8 @@ package com.example.myapplication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import android.widget.Toast
-import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.databinding.ActivityTelaCadastroBinding
-import com.google.android.material.snackbar.Snackbar
 import java.sql.DriverManager
 
 class ActivityTelaCadastro : AppCompatActivity() {
