@@ -7,4 +7,6 @@
     <string name="title_cadastro">Vamos Começar !</string>
     <string name="finalizar_cadastro">Finalizar Cadastro</string>
     <string name="title_rec_senha">Recuperar a Senha</string>
+    <string name="Surname">sobrenome</string>
+    <string name="Name">digite seu nome</string>
 </resources>

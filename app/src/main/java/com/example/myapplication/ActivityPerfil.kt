@@ -61,8 +61,11 @@ class ActivityPerfil : AppCompatActivity() {
                 val altura = rs.getDouble("altura")
                 val nacionalidade = rs.getString("nacionalidade")
                 val peDominante = rs.getString("pe_dominante")
+
                 return Jogador(nome, posicao,
-                    altura.toString().toDouble().toInt(), nacionalidade, peDominante)
+                    altura.toString().toDouble().toInt(),
+                    nacionalidade,
+                    peDominante)
             } else {
                 return null
             }
