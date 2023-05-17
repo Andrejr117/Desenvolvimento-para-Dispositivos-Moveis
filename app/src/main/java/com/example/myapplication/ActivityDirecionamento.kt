@@ -28,6 +28,16 @@ class ActivityDirecionamento : AppCompatActivity() {
             entrarSala()
         }
 
+        val buttonCriarSala = binding.btCriarSala
+        buttonCriarSala.setOnClickListener{
+            val intent = Intent(this, ActivitySalaSorteio::class.java)
+            startActivity(intent)
+
+            validateRoomCode(roomCode = "")
+            createRoomInDatabase()
+
+
+        }
 
         val buttonPerfil = binding.btPerfil
         buttonPerfil.setOnClickListener {
@@ -39,6 +49,14 @@ class ActivityDirecionamento : AppCompatActivity() {
 
     }
 
+    private fun validateRoomCode(roomCode: String): Boolean {
+        return roomCode.length in 1..4
+    }
+
+    private fun createRoomInDatabase(roomCode: String) {
+        // Implemente a lógica para criar uma nova sala no banco de dados MySQL
+        // Aqui você precisará usar bibliotecas ou classes específicas para se conectar e criar a sala no MySQL
+    }
     fun entrarSala() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Entrar em uma Sala")

@@ -17,6 +17,11 @@ class ActivityTimesDefinidos : AppCompatActivity() {
     }
 
 
+
+
+
+
+    //ver se vai usar algum cód
     data class Jogador(val id: Int, val nome: String)
 
     fun main() {

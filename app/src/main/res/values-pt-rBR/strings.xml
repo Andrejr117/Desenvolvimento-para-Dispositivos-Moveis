@@ -9,4 +9,5 @@
     <string name="title_rec_senha">Recuperar a Senha</string>
     <string name="Surname">sobrenome</string>
     <string name="Name">digite seu nome</string>
+    <string name="n_sala">Nº Sala</string>
 </resources>

@@ -13,8 +13,19 @@ class ActivitySalaSorteio : AppCompatActivity() {
         binding = ActivitySalaSorteioBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val roomCode = intent.getStringExtra("roomCode")
+        binding.textNSala.text = roomCode
 
 
+
+
+
+
+
+
+
+
+        //tentar usar algo daq
         val Jogador = mutableListOf<Jogador>()
 
         fun addJogador(playerName: String) {
@@ -32,12 +43,6 @@ class ActivitySalaSorteio : AppCompatActivity() {
             }
         }
     }
-
-
-
-}
-
-
 
 
 
