@@ -25,7 +25,6 @@ class ActivityDirecionamento : AppCompatActivity() {
 
         val buttonEntrarSala = binding.btEntrarSala
         buttonEntrarSala.setOnClickListener{
-            entrarSala()
         }
 
         val buttonCriarSala = binding.btCriarSala
@@ -34,7 +33,6 @@ class ActivityDirecionamento : AppCompatActivity() {
             startActivity(intent)
 
             validateRoomCode(roomCode = "")
-            createRoomInDatabase()
 
 
         }
@@ -53,11 +51,11 @@ class ActivityDirecionamento : AppCompatActivity() {
         return roomCode.length in 1..4
     }
 
-    private fun createRoomInDatabase(roomCode: String) {
+
         // Implemente a lógica para criar uma nova sala no banco de dados MySQL
         // Aqui você precisará usar bibliotecas ou classes específicas para se conectar e criar a sala no MySQL
     }
-    fun entrarSala() {
+    /*fun entrarSala() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Entrar em uma Sala")
 
@@ -67,7 +65,7 @@ class ActivityDirecionamento : AppCompatActivity() {
         input.hint = "Digite o código da Sala"
         builder.setView(input)
 
-        builder.setPositiveButton("Entrar") { _, _ ->
+        *//*builder.setPositiveButton("Entrar") { _, _ ->
             val lobbyCode = input.text.toString()
 
             val dbHelper = MyDatabaseHelper(this)
@@ -97,10 +95,4 @@ class ActivityDirecionamento : AppCompatActivity() {
         builder.setNegativeButton("Cancelar") { dialog, _ -> dialog.cancel() }
 
         builder.show()
-    }
-
-
-
-
-
-}
+    }*/

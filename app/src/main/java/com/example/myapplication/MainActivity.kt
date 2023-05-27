@@ -10,7 +10,15 @@ import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.myapplication.Class.Jogador
+import com.example.myapplication.Class.LoginResponse
 import com.example.myapplication.databinding.ActivityMainBinding
+import com.example.myapplication.networkconection.MyApi
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,40 +30,6 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        val editTextEmail = binding.editEmail
-        val editTextSenha = binding.editSenha
-
-        // Adiciona um listener de clique no botão de login
-        binding.btEntrar.setOnClickListener {
-            // Obtém os valores dos EditTexts
-            val email = editTextEmail.text.toString()
-            val senha = editTextSenha.text.toString().toInt()
-
-            // Verifica se o email e a senha estão corretos usando MySQL
-            val url = "http://seu-servidor.com/login.php?email=$email&senha=$senha"
-            val request = StringRequest(
-                Request.Method.GET, url,
-                { response ->
-                    if (response == "true") {
-                        // Login bem-sucedido, redireciona o usuário para a próxima tela
-                        val intent = Intent(this, ActivityDirecionamento::class.java)
-                        startActivity(intent)
-                        finish()
-                    } else {
-                        // Login falhou, exibe uma mensagem de erro para o usuário
-                        Toast.makeText(this, "E-mail ou senha incorretos", Toast.LENGTH_SHORT).show()
-                    }
-                },
-                { error ->
-                    // Erro ao fazer a solicitação HTTP, exibe uma mensagem de erro para o usuário
-                    Toast.makeText(this, "Erro ao fazer login: ${error.message}", Toast.LENGTH_SHORT).show()
-                }
-            )
-            // Adiciona a solicitação à fila de solicitações Volley
-            Volley.newRequestQueue(this).add(request)
-        }
-
-
         val textViewCadastrar = binding.textTelacadastro
         textViewCadastrar.setOnClickListener {
             val intent = Intent(this, ActivityTelaCadastro::class.java)
@@ -63,13 +37,64 @@ class MainActivity : AppCompatActivity() {
         }
 
         val textViewRecSenha = binding.textTelarecsenha
-        textViewRecSenha.setOnClickListener{
+        textViewRecSenha.setOnClickListener {
             val intent = Intent(this, ActivityRecSenha::class.java)
             startActivity(intent)
         }
 
 
+        binding.btEntrar.setOnClickListener {
+            val email: String = binding.editEmail.text.toString()
+            val senha: String = binding.editSenha.text.toString()
 
+            realizarLogin(email, senha)
+        }
 
+        }
+
+    private fun realizarLogin(email: String, senha: String) {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("http://seu_servidor/api/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val apiService = retrofit.create(MyApi::class.java)
+
+        val call = apiService.realizarLogin(email, senha)
+        call.enqueue(object : Callback<LoginResponse> {
+            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                if (response.isSuccessful) {
+                    val loginResponse: LoginResponse? = response.body()
+                    if (loginResponse != null) {
+                        // Login bem-sucedido
+                        val token: String = loginResponse.token
+                        // Faça o que for necessário com o token
+                    } else {
+                        // Resposta inválida do servidor
+                    }
+                } else {
+                    // Trate a resposta de erro
+                }
+            }
+
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                // Trate o erro
+            }
+        })
     }
+
+
+
+
 }
+
+
+
+//lifecycleScope.launch {
+//    try {
+//        val posts = apiService.getPosts()
+//        // Faça algo com os dados recebidos
+//    } catch (e: Exception) {
+//        // Lidar com erros da API
+//    }
+//}

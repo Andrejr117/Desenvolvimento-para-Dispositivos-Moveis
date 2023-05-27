@@ -2,11 +2,14 @@ package com.example.myapplication
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.Class.AlterarSenhaResponse
 import com.example.myapplication.databinding.ActivityRecSenhaBinding
-import java.sql.Connection
-import java.sql.DriverManager
-import java.sql.PreparedStatement
-import java.sql.SQLException
+import com.example.myapplication.networkconection.MyApi
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class ActivityRecSenha: AppCompatActivity() {
 
@@ -19,49 +22,43 @@ class ActivityRecSenha: AppCompatActivity() {
         supportActionBar?.hide()
 
         binding.btRecSenha.setOnClickListener{
-            val email = binding.editEmail.text.toString()
-            val novaSenha = binding.editRecSenha.text.toString()
-            atualizarSenha(email, novaSenha)
+            val email: String = binding.editEmail.text.toString()
+            val novaSenha: Int = binding.editRecSenha.text.toString().toInt()
+
+            alterarSenha(email, novaSenha)
         }
-
-
 
     }
 
 
+    private fun alterarSenha(email: String, novaSenha: Int) {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("http://seu_servidor/api/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
 
+        val apiService = retrofit.create(MyApi::class.java)
 
-
-    fun atualizarSenha(email: String, novaSenha: String) {
-        var conn: Connection? = null
-        var stmt: PreparedStatement? = null
-        try {
-            // Configuração da conexão com o banco de dados
-            val url = "jdbc:mysql://<seu-host>:<minha-porta>/<meu-banco-de-dados>"
-            val user = "<meu-usuário>"
-            val password = "<minha-senha>"
-            conn = DriverManager.getConnection(url, user, password)
-
-            // Query de atualização da senha
-            val query = "UPDATE usuarios SET senha = ? WHERE email = ?"
-            stmt = conn.prepareStatement(query)
-            stmt.setString(1, novaSenha)
-            stmt.setString(2, email)
-
-            // Executa a query
-            val rowsUpdated = stmt.executeUpdate()
-            if (rowsUpdated > 0) {
-                println("Senha atualizada com sucesso!")
-            } else {
-                println("Email não encontrado.")
+        val call = apiService.alterarSenha(email, novaSenha)
+        call.enqueue(object : Callback<AlterarSenhaResponse> {
+            override fun onResponse(call: Call<AlterarSenhaResponse>, response: Response<AlterarSenhaResponse>) {
+                if (response.isSuccessful) {
+                    val alterarSenhaResponse: AlterarSenhaResponse? = response.body()
+                    if (alterarSenhaResponse != null) {
+                        // Senha modificada com sucesso
+                        // Faça o que for necessário após a alteração da senha
+                    } else {
+                        // Resposta inválida do servidor
+                    }
+                } else {
+                    // Trate a resposta de erro
+                }
             }
-        } catch (e: SQLException) {
-            e.printStackTrace()
-        } finally {
-            // Fecha a conexão e o statement
-            stmt?.close()
-            conn?.close()
-        }
+
+            override fun onFailure(call: Call<AlterarSenhaResponse>, t: Throwable) {
+                // Trate o erro
+            }
+        })
     }
 
 

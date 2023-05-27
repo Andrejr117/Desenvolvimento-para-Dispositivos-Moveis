@@ -1,9 +1,16 @@
 package com.example.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.myapplication.Class.Jogador
 import com.example.myapplication.databinding.ActivityPerfilBinding
-import java.sql.*
+import com.example.myapplication.networkconection.MyApi
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class ActivityPerfil : AppCompatActivity() {
 
@@ -17,24 +24,106 @@ class ActivityPerfil : AppCompatActivity() {
         supportActionBar?.hide()
 
 
-        val email = "<email-do-usuario-logado>"
-        val jogador = buscarJogador(email)
+        obterInformacoesJogador()
 
-        if (jogador != null) {
-            
-            jogador.nome = binding.textNomeUsuario.toString()
-            jogador.posicao = binding.textPosicao.toString()
-            jogador.altura = binding.textAltura.toString().toDouble()
-            jogador.nacionalidade = binding.textNacionalidade.toString()
-            jogador.peDominante = binding.textPeDominante.toString()
-
+        binding.btLogout.setOnClickListener{
+            deslogarUsuario()
+        }
 
         }
+
+
+    private fun obterInformacoesJogador() {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("http://seu_servidor/api/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val apiService = retrofit.create(MyApi::class.java)
+
+        val call = apiService.obterInformacoesJogador()
+        call.enqueue(object : Callback<Jogador> {
+            override fun onResponse(call: Call<Jogador>, response: Response<Jogador>) {
+                if (response.isSuccessful) {
+                    val jogador: Jogador? = response.body()
+                    if (jogador != null) {
+                        exibirInformacoesJogador(jogador)
+                    } else {
+                        // Resposta inválida do servidor
+                    }
+                } else {
+                    // Trate a resposta de erro
+                }
+            }
+
+            override fun onFailure(call: Call<Jogador>, t: Throwable) {
+                // Trate o erro
+            }
+        })
+    }
+
+    private fun exibirInformacoesJogador( jogador: Jogador) {
+        // Atualize os campos da tela de perfil com as informações do usuário
+
+        binding.textNomeUsuario.text = jogador.nome
+        binding.textPosicao.text = jogador.posicao
+        binding.textAltura.text = jogador.altura.toString()
+        binding.textNacionalidade.text = jogador.nacionalidade
+        binding.textPeDominante.text = jogador.peDominante
 
     }
 
 
-    fun buscarJogador(email: String): Jogador? {
+
+
+    private fun deslogarUsuario() {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("http://seu_servidor/api/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val apiService = retrofit.create(MyApi::class.java)
+
+        val call = apiService.deslogarUsuario()
+        call.enqueue(object : Callback<Void> {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if (response.isSuccessful) {
+                    // Limpar as informações de autenticação localmente
+                    // Redirecionar o usuário para a tela de login
+                    val intent = Intent(this@ActivityPerfil, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    // Tratar resposta de erro
+                }
+            }
+
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                // Tratar erro de conexão
+            }
+        })
+    }
+
+
+
+}
+
+
+
+
+/* val email = "<email-do-usuario-logado>"
+        val jogador = buscarJogador(email)
+
+        if (jogador != null) {
+
+            jogador.nome = binding.textNomeUsuario.toString()
+            jogador.posicao = binding.textPosicao.toString()
+            jogador.altura = binding.textAltura.toString().toDouble()
+            jogador.nacionalidade = binding.textNacionalidade.toString()
+            jogador.peDominante = binding.textPeDominante.toString()*/
+
+
+    /*fun buscarJogador(email: String): Jogador? {
         var conn: Connection? = null
         var stmt: PreparedStatement? = null
         var rs: ResultSet? = null
@@ -78,6 +167,4 @@ class ActivityPerfil : AppCompatActivity() {
             stmt?.close()
             conn?.close()
         }
-    }
-
-}
+    }*/

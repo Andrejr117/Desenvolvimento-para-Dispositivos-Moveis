@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.Class
 
 data class Jogador(
     var nome: String,
@@ -8,9 +8,9 @@ data class Jogador(
     var nacionalidade: String,
     var posicao: String,
     var peDominante: String,
-    var altura: Double
-) {
+    var altura: Double,
 
+) {
 
 
 
