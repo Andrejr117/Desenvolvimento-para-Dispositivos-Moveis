@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.myapplication.Class.ApiManager
 import com.example.myapplication.Class.Jogador
 import com.example.myapplication.databinding.ActivityPerfilBinding
 import com.example.myapplication.networkconection.MyApi
@@ -34,11 +35,8 @@ class ActivityPerfil : AppCompatActivity() {
 
 
     private fun obterInformacoesJogador() {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://seu_servidor/api/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
 
+        val retrofit = ApiManager.getRetrofitInstance()
         val apiService = retrofit.create(MyApi::class.java)
 
         val call = apiService.obterInformacoesJogador()
@@ -77,11 +75,7 @@ class ActivityPerfil : AppCompatActivity() {
 
 
     private fun deslogarUsuario() {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://seu_servidor/api/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
+        val retrofit = ApiManager.getRetrofitInstance()
         val apiService = retrofit.create(MyApi::class.java)
 
         val call = apiService.deslogarUsuario()

@@ -2,11 +2,14 @@ package com.example.myapplication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.myapplication.Class.ApiManager
 import com.example.myapplication.Class.Jogador
 import com.example.myapplication.Class.Sala
 import com.example.myapplication.databinding.ActivitySalaSorteioBinding
 import com.example.myapplication.networkconection.MyApi
 import retrofit2.Call
+import android.content.Intent
+
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -30,14 +33,11 @@ class ActivitySalaSorteio : AppCompatActivity() {
 
 
     fun SalaSort(){
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://seu_servidor/api/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
 
+        val retrofit = ApiManager.getRetrofitInstance()
         val apiService = retrofit.create(MyApi::class.java)
 
-        val jogadores: List<Jogador>// Obtenha a lista de jogadores da sala/lobby
+        val jogador: List<Jogador>// Obtenha a lista de jogadores da sala/lobby
 
         val call = apiService.criarTimes()
         call.enqueue(object : retrofit2.Callback<Sala> {

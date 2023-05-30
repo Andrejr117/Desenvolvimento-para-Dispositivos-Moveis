@@ -9,7 +9,19 @@ data class Sala(
 
 ) {
 
+    private var contadorCodigoSala = 0
 
+    private fun gerarCodigoSala(): String {
+        contadorCodigoSala++
+        return "SALA-$contadorCodigoSala"
+
+    }
+
+    companion object {
+        fun add(it: Jogador) {
+
+        }
+    }
 
 
 }

@@ -60,6 +60,7 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-auth-ktx:21.0.3'
     implementation 'com.android.volley:volley:1.2.1'
+    implementation 'androidx.test:core-ktx:1.4.0'
 
     //lib para testes unitários
     testImplementation 'junit:junit:4.13.2'

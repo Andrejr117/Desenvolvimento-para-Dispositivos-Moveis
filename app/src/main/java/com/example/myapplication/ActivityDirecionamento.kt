@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.app.Application
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,7 +10,18 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat.startActivity
+import androidx.lifecycle.ViewModel
+import androidx.test.core.app.ApplicationProvider
+import com.example.myapplication.Class.ApiManager
+import com.example.myapplication.Class.Sala
+import com.example.myapplication.Class.VerificarCodigoResponse
 import com.example.myapplication.databinding.ActivityDirecionamentoBinding
+import com.example.myapplication.databinding.ActivitySalaSorteioBinding
+import com.example.myapplication.networkconection.MyApi
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class ActivityDirecionamento : AppCompatActivity() {
 
@@ -25,14 +37,13 @@ class ActivityDirecionamento : AppCompatActivity() {
 
         val buttonEntrarSala = binding.btEntrarSala
         buttonEntrarSala.setOnClickListener{
+
+            exibirInputDialog()
+
         }
 
         val buttonCriarSala = binding.btCriarSala
         buttonCriarSala.setOnClickListener{
-            val intent = Intent(this, ActivitySalaSorteio::class.java)
-            startActivity(intent)
-
-            validateRoomCode(roomCode = "")
 
 
         }
@@ -47,52 +58,99 @@ class ActivityDirecionamento : AppCompatActivity() {
 
     }
 
-    private fun validateRoomCode(roomCode: String): Boolean {
-        return roomCode.length in 1..4
-    }
 
 
-        // Implemente a lógica para criar uma nova sala no banco de dados MySQL
-        // Aqui você precisará usar bibliotecas ou classes específicas para se conectar e criar a sala no MySQL
-    }
-    /*fun entrarSala() {
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Entrar em uma Sala")
 
-        val input = EditText(this)
-        input.inputType = InputType.TYPE_CLASS_NUMBER
-        input.maxLines = 1
-        input.hint = "Digite o código da Sala"
-        builder.setView(input)
+    private fun criarSala() {
+        // Gerar um código único para a sala
+        val codigoSala = gerarCodigoSala()
 
-        *//*builder.setPositiveButton("Entrar") { _, _ ->
-            val lobbyCode = input.text.toString()
+        // Chamar a API para criar a sala usando o código gerado
+        val retrofit = ApiManager.getRetrofitInstance()
+        val apiService = retrofit.create(MyApi::class.java)
+        val call = apiService.criarSala(codigoSala)
 
-            val dbHelper = MyDatabaseHelper(this)
-            val db = dbHelper.readableDatabase
-            val projection = arrayOf(BaseColumns._ID)
-            val selection = "${DatabaseContract.LobbyEntry.COLUMN_CODE} = ?"
-            val selectionArgs = arrayOf(lobbyCode)
-            val cursor = db.query(
-                DatabaseContract.LobbyEntry.TABLE_NAME,
-                projection,
-                selection,
-                selectionArgs,
-                null,
-                null,
-                null
-            )
-
-            if (cursor.count > 0) {
-                // A sala existe, você pode adicionar o usuário à sala aqui
-            } else {
-                Toast.makeText(this, "Sala não encontrada", Toast.LENGTH_SHORT).show()
+        call.enqueue(object : Callback<ApiResponse> {
+            override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
+                if (response.isSuccessful) {
+                    // Sala criada com sucesso, redirecionar para a tela da sala
+                    val intent = Intent(this@ActivityDirecionamento, ActivitySalaSorteio::class.java)
+                    intent.putExtra("codigoSala", codigoSala)
+                    startActivity(intent)
+                } else {
+                    // Tratar resposta de erro
+                    Toast.makeText(this@ActivityDirecionamento, "Erro ao criar sala", Toast.LENGTH_SHORT).show()
+                }
             }
-            cursor.close()
-            db.close()
+
+            override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
+                // Tratar erro de conexão
+                Toast.makeText(this@ActivityDirecionamento, "Erro de conexão", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+
+
+
+
+
+    fun exibirInputDialog() {
+         val retrofit = ApiManager.getRetrofitInstance()
+         val apiService = retrofit.create(MyApi::class.java)
+            val context = ApplicationProvider.getApplicationContext<Application>()
+            val inputEditText = EditText(context)
+            inputEditText.inputType = InputType.TYPE_CLASS_TEXT
+
+            val dialog = AlertDialog.Builder(context)
+                .setTitle("Digite o código")
+                .setView(inputEditText)
+                .setPositiveButton("Enviar") { _, _ ->
+                    val codigo = inputEditText.text.toString()
+                    enviarCodigo(codigo)
+                }
+                .setNegativeButton("Cancelar", null)
+                .create()
+
+            dialog.show()
         }
 
-        builder.setNegativeButton("Cancelar") { dialog, _ -> dialog.cancel() }
+        private fun enviarCodigo(codigo: String) {
 
-        builder.show()
-    }*/
+            val retrofit = ApiManager.getRetrofitInstance()
+            val apiService = retrofit.create(MyApi::class.java)
+
+            // Faça a chamada à API para verificar o código
+            val call = apiService.verificarCodigo(codigo)
+            call.enqueue(object : Callback<VerificarCodigoResponse> {
+                override fun onResponse(
+                    call: Call<VerificarCodigoResponse>,
+                    response: Response<VerificarCodigoResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        // Código válido, redirecionar para a outra tela do aplicativo
+                        // e adicionar o jogador à lista de jogadores
+
+                        // Ação de redirecionamento para outra tela do aplicativo
+                        val intent = Intent(this@ActivityDirecionamento, ActivitySalaSorteio::class.java)
+                        startActivity(intent)
+
+                        // Adicionar o jogador à lista de jogadores
+                        // Exemplo:
+                        val jogador = response.body()?.jogador
+                        jogador?.let { Sala.add(it) }
+                    } else {
+                        // Código inválido, tratar erro
+                    }
+                }
+
+
+
+                // Restante do código do Callback
+            })
+        }
+
+
+}
+
+// sem esse ele tbm dá erro kkk

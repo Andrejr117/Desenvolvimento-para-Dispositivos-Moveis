@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.myapplication.Class.ApiManager
 import com.example.myapplication.Class.Jogador
 import com.example.myapplication.Class.LoginResponse
 import com.example.myapplication.databinding.ActivityMainBinding
@@ -53,11 +54,8 @@ class MainActivity : AppCompatActivity() {
         }
 
     private fun realizarLogin(email: String, senha: String) {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://seu_servidor/api/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
 
+        val retrofit = ApiManager.getRetrofitInstance()
         val apiService = retrofit.create(MyApi::class.java)
 
         val call = apiService.realizarLogin(email, senha)
@@ -66,8 +64,11 @@ class MainActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val loginResponse: LoginResponse? = response.body()
                     if (loginResponse != null) {
+
                         // Login bem-sucedido
-                        val token: String = loginResponse.token
+                        val intent = Intent(this@MainActivity, ActivityDirecionamento::class.java)
+                        startActivity(intent)
+
                         // Faça o que for necessário com o token
                     } else {
                         // Resposta inválida do servidor
@@ -89,12 +90,3 @@ class MainActivity : AppCompatActivity() {
 }
 
 
-
-//lifecycleScope.launch {
-//    try {
-//        val posts = apiService.getPosts()
-//        // Faça algo com os dados recebidos
-//    } catch (e: Exception) {
-//        // Lidar com erros da API
-//    }
-//}

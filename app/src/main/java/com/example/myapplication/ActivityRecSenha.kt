@@ -1,8 +1,10 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.Class.AlterarSenhaResponse
+import com.example.myapplication.Class.ApiManager
 import com.example.myapplication.databinding.ActivityRecSenhaBinding
 import com.example.myapplication.networkconection.MyApi
 import retrofit2.Call
@@ -32,11 +34,8 @@ class ActivityRecSenha: AppCompatActivity() {
 
 
     private fun alterarSenha(email: String, novaSenha: Int) {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://seu_servidor/api/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
 
+        val retrofit = ApiManager.getRetrofitInstance()
         val apiService = retrofit.create(MyApi::class.java)
 
         val call = apiService.alterarSenha(email, novaSenha)
@@ -47,6 +46,8 @@ class ActivityRecSenha: AppCompatActivity() {
                     if (alterarSenhaResponse != null) {
                         // Senha modificada com sucesso
                         // Faça o que for necessário após a alteração da senha
+                        val intent = Intent(this@ActivityRecSenha, MainActivity::class.java)
+                        startActivity(intent)
                     } else {
                         // Resposta inválida do servidor
                     }

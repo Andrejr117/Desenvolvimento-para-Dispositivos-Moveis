@@ -1,10 +1,8 @@
 package com.example.myapplication.networkconection
 
-import com.example.myapplication.Class.AlterarSenhaResponse
-import com.example.myapplication.Class.Jogador
-import com.example.myapplication.Class.LoginResponse
-import com.example.myapplication.Class.Sala
+import com.example.myapplication.Class.*
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 
 interface MyApi {
@@ -28,12 +26,21 @@ interface MyApi {
     ): Call<AlterarSenhaResponse>
 
 
+
+    @POST("salas")
+    fun criarSala(): Call<Sala>
+
+
     @POST("logout")
     fun deslogarUsuario(): Call<Void>
 
 
+    @GET("verificarCodigo")
+    fun verificarCodigo(@Query("codigo") codigo: String): Call<Response<VerificarCodigoResponse>>
+
     @POST("criar_times")
     fun criarTimes(): Call<Sala>
+
 
     @POST("jogadores")
     fun cadastrarJogador(@Body jogador: Jogador): Call<Void>

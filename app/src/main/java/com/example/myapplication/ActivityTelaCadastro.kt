@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
+import com.example.myapplication.Class.ApiManager
 import com.example.myapplication.Class.Jogador
 import com.example.myapplication.databinding.ActivityTelaCadastroBinding
 import com.example.myapplication.networkconection.MyApi
@@ -52,11 +53,8 @@ class ActivityTelaCadastro : AppCompatActivity() {
         peDominante: String,
         altura: Double
     ) {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://seu_servidor/api/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
 
+        val retrofit = ApiManager.getRetrofitInstance()
         val apiService = retrofit.create(MyApi::class.java)
 
         val jogador = Jogador(
@@ -75,6 +73,8 @@ class ActivityTelaCadastro : AppCompatActivity() {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
                     // Cadastro realizado com sucesso
+                    val intent = Intent(this@ActivityTelaCadastro, MainActivity::class.java)
+                    startActivity(intent)
                 } else {
                     // Trate a resposta de erro
                 }
