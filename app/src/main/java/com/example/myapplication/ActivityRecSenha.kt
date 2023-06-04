@@ -57,7 +57,8 @@ class ActivityRecSenha: AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<AlterarSenhaResponse>, t: Throwable) {
-                // Trate o erro
+                t.printStackTrace()
+            // Trate o erro
             }
         })
     }

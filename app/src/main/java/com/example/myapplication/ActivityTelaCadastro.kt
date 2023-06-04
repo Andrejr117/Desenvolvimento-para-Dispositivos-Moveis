@@ -3,8 +3,6 @@ package com.example.myapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.Toast
 import com.example.myapplication.Class.ApiManager
 import com.example.myapplication.Class.Jogador
 import com.example.myapplication.databinding.ActivityTelaCadastroBinding
@@ -12,9 +10,6 @@ import com.example.myapplication.networkconection.MyApi
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import java.sql.DriverManager
 
 class ActivityTelaCadastro : AppCompatActivity() {
 
@@ -40,7 +35,6 @@ class ActivityTelaCadastro : AppCompatActivity() {
             cadastrarUsuario(nome, email, senha, endereco, nacionalidade, posicao, peDominante, altura)
         }
 
-
 }
 
     private fun cadastrarUsuario(
@@ -58,7 +52,6 @@ class ActivityTelaCadastro : AppCompatActivity() {
         val apiService = retrofit.create(MyApi::class.java)
 
         val jogador = Jogador(
-            nome = nome,
             email = email,
             senha = senha,
             endereco = endereco,
@@ -76,12 +69,21 @@ class ActivityTelaCadastro : AppCompatActivity() {
                     val intent = Intent(this@ActivityTelaCadastro, MainActivity::class.java)
                     startActivity(intent)
                 } else {
-                    // Trate a resposta de erro
+                    val responseCode = response.code()
+                    if (responseCode == 400) {
+                        // Erro de requisição inválida
+                    } else if (responseCode == 401) {
+                        // Erro de autenticação
+                    } else {
+                        // Outro erro
+                    }
+                    // resposta de erro
                 }
             }
 
             override fun onFailure(call: Call<Void>, t: Throwable) {
                 // Trate o erro
+                t.printStackTrace()
             }
         })
     }

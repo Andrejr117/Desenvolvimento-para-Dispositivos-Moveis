@@ -14,57 +14,17 @@ class ActivityTimesDefinidos : AppCompatActivity() {
         binding = ActivityTimesDefinidosBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
+
+
+        // Recuperar os times passados como extras da Intent
+        val time1 = intent.getStringArrayExtra("time1") ?: emptyArray()
+        val time2 = intent.getStringArrayExtra("time2") ?: emptyArray()
+
+        // Exibir os times na tela
+        binding.textTime1.text = time1.joinToString(", ") // Converter o array em uma String separada por vírgulas
+        binding.textTime2.text = time2.joinToString(", ") // Converter o array em uma String separada por vírgulas
     }
 
-
-
-
-
-
-    //ver se vai usar algum cód
-    data class Jogador(val id: Int, val nome: String)
-
-    fun main() {
-        // Simulação de banco de dados com jogadores cadastrados
-        val jogadores = listOf(
-            Jogador(1, "João"),
-            Jogador(2, "Maria"),
-            Jogador(3, "Pedro"),
-            Jogador(4, "Ana")
-        )
-
-        val scanner = Scanner(System.`in`)
-
-        println("Bem-vindo(a) ao sorteio de jogadores!")
-        println("Digite o número de jogadores que deseja sortear:")
-        val numeroSorteados = scanner.nextInt()
-
-        if (numeroSorteados > jogadores.size) {
-            println("O número de jogadores a serem sorteados excede o número de jogadores cadastrados.")
-        } else {
-            val jogadoresSorteados = sortearJogadores(jogadores, numeroSorteados)
-            println("Os jogadores sorteados são:")
-            for (jogador in jogadoresSorteados) {
-                println("${jogador.nome} (ID: ${jogador.id})")
-            }
-        }
-    }
-
-    fun sortearJogadores(jogadores: List<Jogador>, numeroSorteados: Int): List<Jogador> {
-        val jogadoresSorteados = mutableListOf<Jogador>()
-        val numerosSorteados = mutableSetOf<Int>()
-        val random = Random()
-
-        while (jogadoresSorteados.size < numeroSorteados) {
-            val indiceSorteado = random.nextInt(jogadores.size)
-            if (indiceSorteado !in numerosSorteados) {
-                numerosSorteados.add(indiceSorteado)
-                jogadoresSorteados.add(jogadores[indiceSorteado])
-            }
-        }
-
-        return jogadoresSorteados
-    }
 
 }
 

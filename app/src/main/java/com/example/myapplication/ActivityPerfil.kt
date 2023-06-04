@@ -10,8 +10,6 @@ import com.example.myapplication.networkconection.MyApi
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class ActivityPerfil : AppCompatActivity() {
 
@@ -55,7 +53,8 @@ class ActivityPerfil : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<Jogador>, t: Throwable) {
-                // Trate o erro
+                t.printStackTrace()
+            // Trate o erro
             }
         })
     }
@@ -93,7 +92,8 @@ class ActivityPerfil : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<Void>, t: Throwable) {
-                // Tratar erro de conexão
+                t.printStackTrace()
+            // Tratar erro de conexão
             }
         })
     }

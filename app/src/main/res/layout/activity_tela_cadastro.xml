@@ -42,6 +42,7 @@
         app:layout_constraintTop_toBottomOf="@id/title_cadastro"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:text="nome"
         />
 
     <EditText
@@ -49,10 +50,12 @@
         style="@style/Edit_Text"
         android:hint="Email" android:textColorHint="@color/black"
         android:drawableRight="@drawable/ic_email"
+        android:maxLength="100"
         android:inputType="textEmailAddress" android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@id/edit_nome"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:text="joao@gmail.com"
         />
 
     <EditText
@@ -64,6 +67,7 @@
         app:layout_constraintTop_toBottomOf="@id/edit_email"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:text="123456"
         />
 
     <EditText
@@ -75,6 +79,7 @@
         app:layout_constraintTop_toBottomOf="@id/edit_senha"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:text="rua seu z~e"
         />
 
     <EditText
@@ -86,6 +91,7 @@
         app:layout_constraintTop_toBottomOf="@id/edit_endereco"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:text="brasileiro"
         />
 
     <EditText
@@ -97,6 +103,7 @@
         app:layout_constraintTop_toBottomOf="@id/edit_nacionalidade"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:text="atacante"
         />
 
     <EditText
@@ -108,6 +115,7 @@
         app:layout_constraintTop_toBottomOf="@id/edit_posicao"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:text="canhoto"
         />
 
     <EditText
@@ -118,7 +126,8 @@
         android:inputType="numberDecimal" android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_pe_dominante" />
+        app:layout_constraintTop_toBottomOf="@id/edit_pe_dominante"
+        android:text="1.8"/>
 
     <Button
         android:id="@+id/bt_cadastro"

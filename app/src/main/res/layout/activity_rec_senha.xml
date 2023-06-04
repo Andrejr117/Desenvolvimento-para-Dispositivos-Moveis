@@ -39,6 +39,7 @@
         android:id="@+id/edit_email"
         style="@style/Edit_Text"
         android:hint="Email" android:textColorHint="@color/black"
+        android:maxLength="100"
         android:drawableRight="@drawable/ic_email"
         android:inputType="textEmailAddress"
         android:layout_marginTop="30dp"

@@ -33,6 +33,7 @@
         android:textColor="@color/black"
         android:drawableRight="@drawable/ic_email"
         android:inputType="textEmailAddress"
+        android:maxLength="100"
         app:layout_constraintStart_toStartOf="@id/containerComponents"
         app:layout_constraintEnd_toEndOf="@id/containerComponents"
         app:layout_constraintTop_toTopOf="@id/containerComponents"

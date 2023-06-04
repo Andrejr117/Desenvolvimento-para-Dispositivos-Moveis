@@ -61,21 +61,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view2" />
 
-    <View
-        android:id="@+id/containerSort"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerviewJogadores"
         style="@style/ContainerComponents"
-        android:layout_width="373dp"
-        android:layout_height="326dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="363dp"
+        android:layout_height="357dp"
+        android:layout_marginTop="20dp"
+        app:adapter="@{adapter}"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view2" />
+        app:layout_constraintTop_toBottomOf="@+id/jogadores" />
 
     <TextView
         android:id="@+id/jogadores"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="19dp"
         android:text="Jogadores"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
@@ -84,17 +87,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/containerSort" />
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/bt_entrar"
+        android:id="@+id/bt_sortear"
         style="@style/Button"
+        android:layout_marginTop="18dp"
         android:text="Sortear Times"
-        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/containerSort"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerviewJogadores" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

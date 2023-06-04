@@ -18,6 +18,9 @@ interface MyApi {
     @GET("jogadores/{jogadorId}")
     fun obterInformacoesJogador(): Call<Jogador>
 
+    @GET("jogadores")
+    suspend fun obterJogadores(): List<Jogador>
+
     @FormUrlEncoded
     @POST("alterarSenha")
     fun alterarSenha(
@@ -27,7 +30,7 @@ interface MyApi {
 
 
 
-    @POST("salas")
+    @POST("sala")
     fun criarSala(): Call<Sala>
 
 
@@ -42,7 +45,7 @@ interface MyApi {
     fun criarTimes(): Call<Sala>
 
 
-    @POST("jogadores")
+    @POST("jogador")
     fun cadastrarJogador(@Body jogador: Jogador): Call<Void>
 
 }

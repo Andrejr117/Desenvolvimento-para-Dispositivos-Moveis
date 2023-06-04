@@ -8,10 +8,8 @@ data class Jogador(
     var nacionalidade: String,
     var posicao: String,
     var peDominante: String,
-    var altura: Double,
+    var altura: Double
 
 ) {
-
-
 
 }
