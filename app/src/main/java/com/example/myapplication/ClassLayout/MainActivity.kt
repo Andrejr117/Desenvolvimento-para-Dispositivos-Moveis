@@ -33,13 +33,20 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
-        binding.btEntrar.setOnClickListener {
+        val buttonEntrar = binding.btEntrar
+        buttonEntrar.setOnClickListener{
             val email: String = binding.editEmail.text.toString()
             val senha: Int = binding.editSenha.text.toString().toInt()
 
             realizarLogin(email, senha)
         }
+
+//        binding.btEntrar.setOnClickListener {
+//            val email: String = binding.editEmail.text.toString()
+//            val senha: Int = binding.editSenha.text.toString().toInt()
+//
+//            realizarLogin(email, senha)
+//        }
 
         }
 
@@ -70,6 +77,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                 // Trate o erro
+                t.printStackTrace()
             }
         })
     }
