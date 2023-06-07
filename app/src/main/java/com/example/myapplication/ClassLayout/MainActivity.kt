@@ -1,25 +1,15 @@
-package com.example.myapplication
+package com.example.myapplication.ClassLayout
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
-import com.android.volley.Request
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
 import com.example.myapplication.Class.ApiManager
-import com.example.myapplication.Class.Jogador
 import com.example.myapplication.Class.LoginResponse
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.networkconection.MyApi
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
@@ -46,14 +36,14 @@ class MainActivity : AppCompatActivity() {
 
         binding.btEntrar.setOnClickListener {
             val email: String = binding.editEmail.text.toString()
-            val senha: String = binding.editSenha.text.toString()
+            val senha: Int = binding.editSenha.text.toString().toInt()
 
             realizarLogin(email, senha)
         }
 
         }
 
-    private fun realizarLogin(email: String, senha: String) {
+    private fun realizarLogin(email: String, senha: Int) {
 
         val retrofit = ApiManager.getRetrofitInstance()
         val apiService = retrofit.create(MyApi::class.java)

@@ -16,30 +16,30 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".ActivityItemUsuario"
+            android:name=".Class.ActivityItemUsuario"
             android:exported="false" />
         <activity
-            android:name=".ActivitySalaSorteio"
+            android:name=".ClassLayout.ActivitySalaSorteio"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ActivityTimesDefinidos"
+            android:name=".ClassLayout.ActivityTimesDefinidos"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ActivityPerfil"
+            android:name=".ClassLayout.ActivityPerfil"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ActivityDirecionamento"
+            android:name=".ClassLayout.ActivityDirecionamento"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ActivityTelaCadastro"
+            android:name=".ClassLayout.ActivityTelaCadastro"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ClassLayout.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>

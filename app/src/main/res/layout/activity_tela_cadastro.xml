@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical"
-    tools:context=".ActivityTelaCadastro">
+    tools:context=".ClassLayout.ActivityTelaCadastro">
 
     <TextView
         android:id="@+id/title_cadastro"
@@ -42,7 +42,6 @@
         app:layout_constraintTop_toBottomOf="@id/title_cadastro"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="nome"
         />
 
     <EditText
@@ -55,7 +54,7 @@
         app:layout_constraintTop_toBottomOf="@id/edit_nome"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="joao@gmail.com"
+
         />
 
     <EditText
@@ -67,7 +66,7 @@
         app:layout_constraintTop_toBottomOf="@id/edit_email"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="123456"
+
         />
 
     <EditText
@@ -79,7 +78,7 @@
         app:layout_constraintTop_toBottomOf="@id/edit_senha"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="rua seu z~e"
+
         />
 
     <EditText
@@ -91,7 +90,7 @@
         app:layout_constraintTop_toBottomOf="@id/edit_endereco"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="brasileiro"
+
         />
 
     <EditText
@@ -103,7 +102,7 @@
         app:layout_constraintTop_toBottomOf="@id/edit_nacionalidade"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="atacante"
+
         />
 
     <EditText
@@ -115,7 +114,7 @@
         app:layout_constraintTop_toBottomOf="@id/edit_posicao"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="canhoto"
+
         />
 
     <EditText
@@ -127,7 +126,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edit_pe_dominante"
-        android:text="1.8"/>
+        />
 
     <Button
         android:id="@+id/bt_cadastro"

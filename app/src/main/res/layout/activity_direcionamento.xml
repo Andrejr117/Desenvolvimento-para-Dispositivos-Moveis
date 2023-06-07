@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical"
-    tools:context=".ActivityDirecionamento">
+    tools:context=".ClassLayout.ActivityDirecionamento">
 
     <View
         android:id="@+id/container_text_direcionamento"

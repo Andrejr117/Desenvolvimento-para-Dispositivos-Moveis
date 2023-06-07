@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.ClassLayout
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -81,7 +81,6 @@ class ActivityPerfil : AppCompatActivity() {
         call.enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
-                    // Limpar as informações de autenticação localmente
                     // Redirecionar o usuário para a tela de login
                     val intent = Intent(this@ActivityPerfil, MainActivity::class.java)
                     startActivity(intent)

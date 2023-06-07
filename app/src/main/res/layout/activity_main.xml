@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".ClassLayout.MainActivity">
 
     <ImageView
         android:id="@+id/logo"
@@ -29,7 +29,8 @@
     <EditText
         android:id="@+id/edit_email"
         style="@style/Edit_Text"
-        android:hint="Email" android:textColorHint="@color/black"
+        android:hint="Email"
+        android:textColorHint="@color/black"
         android:textColor="@color/black"
         android:drawableRight="@drawable/ic_email"
         android:inputType="textEmailAddress"

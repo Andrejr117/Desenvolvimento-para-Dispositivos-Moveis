@@ -1,27 +1,9 @@
-package com.example.myapplication
+package com.example.myapplication.ClassLayout
 
-import android.app.Application
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.BaseColumns
-import android.text.InputType
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat.startActivity
-import androidx.lifecycle.ViewModel
-import androidx.test.core.app.ApplicationProvider
-import com.example.myapplication.Class.ApiManager
-import com.example.myapplication.Class.Sala
-import com.example.myapplication.Class.VerificarCodigoResponse
 import com.example.myapplication.databinding.ActivityDirecionamentoBinding
-import com.example.myapplication.databinding.ActivitySalaSorteioBinding
-import com.example.myapplication.networkconection.MyApi
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class ActivityDirecionamento : AppCompatActivity() {
 
@@ -44,7 +26,8 @@ class ActivityDirecionamento : AppCompatActivity() {
 
         val buttonCriarSala = binding.btCriarSala
         buttonCriarSala.setOnClickListener{
-
+            val intent = Intent(this, ActivitySalaSorteio::class.java)
+            startActivity(intent)
 
         }
 

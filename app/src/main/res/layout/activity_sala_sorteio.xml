@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical"
-    tools:context=".ActivitySalaSorteio">
+    tools:context=".ClassLayout.ActivitySalaSorteio">
 
 
     <View
@@ -67,8 +67,7 @@
         style="@style/ContainerComponents"
         android:layout_width="363dp"
         android:layout_height="357dp"
-        android:layout_marginTop="20dp"
-        app:adapter="@{adapter}"
+        android:layout_marginTop="16dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

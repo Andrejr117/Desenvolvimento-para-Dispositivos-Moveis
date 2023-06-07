@@ -9,20 +9,20 @@ interface MyApi {
 
 
     @FormUrlEncoded
-    @POST("login")
+    @POST("/login")
     fun realizarLogin(
         @Field("email") email: String,
-        @Field("senha") senha: String
+        @Field("senha") senha: Int
     ): Call<LoginResponse>
 
-    @GET("jogadores/{jogadorId}")
+    @GET("/infojogador/{idJogador}")
     fun obterInformacoesJogador(): Call<Jogador>
 
-    @GET("jogadores")
+    @GET("/jogador/{idJogador}")
     suspend fun obterJogadores(): List<Jogador>
 
     @FormUrlEncoded
-    @POST("alterarSenha")
+    @POST("/alterarsenha/{idJogador}")
     fun alterarSenha(
         @Field("email") email: String,
         @Field("novaSenha") novaSenha: Int

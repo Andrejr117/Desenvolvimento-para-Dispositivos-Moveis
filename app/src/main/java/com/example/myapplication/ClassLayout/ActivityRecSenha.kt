@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.ClassLayout
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,8 +10,6 @@ import com.example.myapplication.networkconection.MyApi
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class ActivityRecSenha: AppCompatActivity() {
 
