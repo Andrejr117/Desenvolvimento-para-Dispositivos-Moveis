@@ -3,25 +3,9 @@ package com.example.myapplication.Class
 import com.example.myapplication.Class.Jogador
 
 data class Sala(
-
-    var IDsala: Int,
-    var Lista: ArrayList<Jogador>
-
-) {
-
-    private var contadorCodigoSala = 0
-
-    private fun gerarCodigoSala(): String {
-        contadorCodigoSala++
-        return "SALA-$contadorCodigoSala"
-
-    }
-
-    companion object {
-        fun add(it: Jogador) {
-
-        }
-    }
-
-
-}
+    val salaId: Long? = null,
+    val numeroSala: Int,
+    val equipe1: String?,
+    val equipe2: String?,
+    val jogadores: MutableList<Jogador> = mutableListOf()
+)

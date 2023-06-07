@@ -23,6 +23,16 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".ClassLayout.ActivityTelaCadastro"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".ClassLayout.ActivityRecSenha"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+
+        <activity
             android:name=".ClassLayout.ActivityTimesDefinidos"
             android:exported="false"
             android:screenOrientation="portrait" />
@@ -34,10 +44,7 @@
             android:name=".ClassLayout.ActivityDirecionamento"
             android:exported="false"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".ClassLayout.ActivityTelaCadastro"
-            android:exported="false"
-            android:screenOrientation="portrait" />
+
         <activity
             android:name=".ClassLayout.MainActivity"
             android:exported="true"

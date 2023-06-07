@@ -9,7 +9,7 @@ object ApiManager {
     fun getRetrofitInstance(): Retrofit {
         if (retrofit == null) {
             retrofit = Retrofit.Builder()
-                .baseUrl("http://192.168.0.106:8080/api/")
+                .baseUrl("http://10.100.3.77:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         }

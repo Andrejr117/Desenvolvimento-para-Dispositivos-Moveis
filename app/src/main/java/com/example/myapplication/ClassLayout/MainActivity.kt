@@ -33,20 +33,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val buttonEntrar = binding.btEntrar
-        buttonEntrar.setOnClickListener{
+        binding.btEntrar.setOnClickListener {
             val email: String = binding.editEmail.text.toString()
             val senha: Int = binding.editSenha.text.toString().toInt()
 
             realizarLogin(email, senha)
         }
-
-//        binding.btEntrar.setOnClickListener {
-//            val email: String = binding.editEmail.text.toString()
-//            val senha: Int = binding.editSenha.text.toString().toInt()
-//
-//            realizarLogin(email, senha)
-//        }
 
         }
 
